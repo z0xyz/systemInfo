@@ -1,16 +1,23 @@
 #!/bin/bash
-kernel_name=$(uname -s)
+declare red_ansi="\033[0;31m"
+declare indentation="\t\t\t"
 
-echo "Current kernel version"
-uname -mrs
+kernel_info(){
+    local kernel_name=$(uname -s)
 
-echo ""
+    echo "Current kernel version"
+    echo -e "$red_ansi $(uname -mrs)"
 
-if  [ $kernel_name == "Linux" ]
-then
-    echo "Installed kernels" 
-    ls -l /lib/modules | awk '{ print $9} ' | tail -n +2
-elif [ $kernel_name == "FreeBSD" ]
-then
-    echo "The kernel type is FreeBsd"
-fi
+    echo ""
+
+    if  [ $kernel_name == "Linux" ]
+    then
+        echo 'Installed kernels'
+        echo -e "$red_ansi $(ls -l /lib/modules | awk '{ print $9} ' | tail -n +2)"
+    elif [ $kernel_name == "FreeBSD" ]
+    then
+        echo "The kernel type is FreeBsd"
+    fi
+}
+
+kernel_info
