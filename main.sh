@@ -26,8 +26,8 @@ battery_info(){
     local battery_percentage="/sys/class/power_supply/BAT0/capacity"
     if [ -e $current_battery_status ] && [ -e $initial_battery_status ] && [ -e $battery_percentage ];then
         local battery_health="$(( $(cat $current_battery_status) / $(cat $initial_battery_status) * 100 ))"
-        echo "Battery Health    $battery_health"
-        echo "Battery percentage  $(cat $battery_percentage)"
+        echo "Battery Health    "$battery_health"%"
+        echo "Battery percentage  $(cat $battery_percentage)%"
     fi
 
 }
