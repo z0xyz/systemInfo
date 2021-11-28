@@ -32,5 +32,6 @@ battery_info(){
 
 }
 
+figlet -c -t -k -f slant System Resources | lolcat
 kernel_info
 battery_info
